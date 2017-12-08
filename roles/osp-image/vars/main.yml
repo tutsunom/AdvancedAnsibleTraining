@@ -1,0 +1,2 @@
+image_name: rhel-guest
+image_path: /tmp/rhel-guest-image.qcow2

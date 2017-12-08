@@ -1,0 +1,13 @@
+- block:
+  - name: download RHEL image
+    get_url:
+      url: http://www.opentlc.com/download/osp_advanced_networking/rhel-guest-image-7.2-20151102.0.x86_64.qcow2
+      dest: "{{ image_path }}"
+  - os_image:
+      cloud: ospcloud
+      name: "{{ image_name }}"
+      container_format: bare
+      disk_format: qcow2
+      state: present
+      filename: "{{ image_path }}"
+  become: yes

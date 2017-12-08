@@ -1,0 +1,10 @@
+---
+ext_net_name: ext_network
+ext_subnet_name: external_subnet
+ext_net_cidr: 10.10.10.0/24
+dns_nameserver1: 8.8.8.7
+dns_nameserver2: 8.8.8.8
+int_net_name: int_network
+int_subnet_name: internal_subnet
+int_net_cidr: 20.20.20.0/24
+router_name: router1

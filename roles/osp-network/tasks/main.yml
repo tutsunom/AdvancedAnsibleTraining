@@ -1,0 +1,51 @@
+- os_network:
+    cloud: "{{ cloud_name }}"
+    state: present
+    name: "{{ ext_net_name }}"
+    external: true
+- os_subnet:
+    cloud: "{{ cloud_name }}"
+    state: present
+    network_name: "{{ ext_net_name }}"
+    name: "{{ ext_subnet_name }}"
+    cidr: "{{ ext_net_cidr }}"
+    dns_nameservers:
+       - "{{ dns_nameserver1 }}"
+       - "{{ dns_nameserver2 }}"
+    host_routes:
+       - destination: 0.0.0.0/0
+         nexthop: 10.10.10.0
+       - destination: 192.168.0.0/24
+         nexthop: 192.168.0.0
+- os_network:
+    cloud: "{{ cloud_name }}"
+    state: present
+    name: "{{ int_net_name }}"
+    external: false
+  register: internal
+  tags:
+   - tested
+- os_subnet:
+    cloud: "{{ cloud_name }}"
+    state: present
+    network_name: "{{ int_net_name }}"
+    name: "{{ int_subnet_name }}"
+    cidr: "{{ int_net_cidr }}"
+    dns_nameservers:
+       - "{{ dns_nameserver1 }}"
+       - "{{ dns_nameserver2 }}"
+    host_routes:
+       - destination: 0.0.0.0/0
+         nexthop: 192.168.0.0
+       - destination: 192.168.0.0/24
+         nexthop: 192.168.0.0
+
+- os_router:
+    cloud: "{{ cloud_name }}"
+    state: present
+    name: "{{ router_name }}"
+    network: "{{ ext_net_name }}"
+    external_fixed_ips:
+      - subnet: "{{ ext_subnet_name }}"
+    interfaces:
+      - "{{ int_subnet_name }}"

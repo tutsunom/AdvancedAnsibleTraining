@@ -1,0 +1,24 @@
+- os_router:
+    cloud: "{{ cloud_name }}"
+    state: "{{ component_state }}"
+    name: "{{ router_name }}"
+
+- os_subnet:
+    cloud: "{{ cloud_name }}"
+    state: "{{ component_state }}"
+    name: "{{ ext_subnet_name }}"
+
+- os_subnet:
+    cloud: "{{ cloud_name }}"
+    state: "{{ component_state }}"
+    name: "{{ int_subnet_name }}"
+
+- os_network:
+    cloud: "{{ cloud_name }}"
+    state: "{{ component_state }}"
+    name: "{{ ext_net_name }}"
+
+- os_network:
+    cloud: "{{ cloud_name }}"
+    state: "{{ component_state }}"
+    name: "{{ int_net_name }}"

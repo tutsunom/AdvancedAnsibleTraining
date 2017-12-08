@@ -1,0 +1,11 @@
+server_name: frontend
+server_group: frontends
+securitygroup_name: frontend_secgrp
+image_name: rhel-guest
+key_name: ansible_ssh
+int_net_name: int_network
+ext_net_name: ext_network
+dbserver_name: appdb
+flavor_name: m2.small
+dbserver_group: appdbs
+deployment: dev

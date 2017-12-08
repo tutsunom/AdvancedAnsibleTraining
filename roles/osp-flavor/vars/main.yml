@@ -1,0 +1,6 @@
+---
+  cloud_name: ospcloud
+  flavor_name: m2.small
+  flavor_ram: 2048
+  flavor_vcpus: 1
+  flavor_disk: 10
