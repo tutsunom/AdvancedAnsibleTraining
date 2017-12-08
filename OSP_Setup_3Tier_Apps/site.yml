@@ -1,0 +1,33 @@
+---
+- name: setup 3tiers app
+  gather_facts: false
+  hosts: jumpbox
+  #  vars:
+  #    cloud_name: ospcloud
+  #    deployment: dev
+  roles:
+    - name: osp-facts
+
+- name: setup frontend
+  gather_facts: false
+  hosts: frontends
+  become: yes
+  roles:
+    - name: repo-setup
+    - name: haproxy-setup
+
+- name: setup app
+  gather_facts: false
+  hosts: apps
+  become: yes
+  roles:
+    - name: repo-setup
+    - name: tomcat-setup
+
+- name: setup appdb
+  gather_facts: false
+  hosts: appdbs
+  become: yes
+  roles:
+    - name: repo-setup
+    - name: geerlingguy.postgresql

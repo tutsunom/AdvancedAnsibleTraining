@@ -1,0 +1,3 @@
+server_name: app2
+server_group: apps
+securitygroup_name: apps_secgrp
