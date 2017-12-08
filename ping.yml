@@ -1,0 +1,9 @@
+---
+- hosts: jumpbox
+  gather_facts: false
+  roles:
+    - osp-facts
+
+- hosts: webservers
+  tasks:
+    - ping: 
