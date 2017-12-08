@@ -1,0 +1,3 @@
+server_name: appdb
+server_group: appdbs
+securitygroup_name: appdb_secgrp

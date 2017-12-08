@@ -1,0 +1,53 @@
+---
+- hosts: jumpbox
+  gather_facts: true 
+  vars:
+    cloud_name: ospcloud
+    deployment: dev
+  roles:
+    - osp-flavor
+    - osp-network
+  tasks:
+    - include_vars: "{{ item }}"
+      with_items:
+        - "host_vars/frontend1.yml"
+        - "group_vars/frontends.yml"
+    - include_role:
+        name: osp-securitygroup
+    - include_role:
+        name: osp-keypair
+    - include_role:
+        name: osp-instance
+
+    - include_vars: "{{ item }}"
+      with_items:
+        - "host_vars/app1.yml"
+        - "group_vars/apps.yml"
+    - include_role:
+        name: osp-securitygroup
+    - include_role:
+        name: osp-keypair
+    - include_role:
+        name: osp-instance
+
+    - include_vars: "{{ item }}"
+      with_items:
+        - "host_vars/app2.yml"
+        - "group_vars/apps.yml"
+    - include_role:
+        name: osp-securitygroup
+    - include_role:
+        name: osp-keypair
+    - include_role:
+        name: osp-instance
+
+    - include_vars: "{{ item }}"
+      with_items:
+        - "host_vars/appdb.yml"
+        - "group_vars/appdbs.yml"
+    - include_role:
+        name: osp-securitygroup
+    - include_role:
+        name: osp-keypair
+    - include_role:
+        name: osp-instance
