@@ -1,30 +1,69 @@
 - os_security_group:
     cloud: "{{ cloud_name }}"
     state: present
-    name: "{{ securitygroup_name }}"
-    description: ICMP and SSH enabled
-  tags:
-    - tested
+    name: ssh
 - os_security_group_rule:
     cloud: "{{ cloud_name }}"
-    security_group: "{{ securitygroup_name }}"
+    security_group: ssh
     protocol: tcp
     port_range_min: 22
     port_range_max: 22
     remote_ip_prefix: 0.0.0.0/0
-  tags:
-    - tested
+
+- os_security_group:
+    cloud: "{{ cloud_name }}"
+    state: present
+    name: http
 - os_security_group_rule:
     cloud: "{{ cloud_name }}"
-    security_group: "{{ securitygroup_name }}"
+    security_group: http
     protocol: tcp
     port_range_min: 80
     port_range_max: 80
     remote_ip_prefix: 0.0.0.0/0
+
+- os_security_group:
+    cloud: "{{ cloud_name }}"
+    state: present
+    name: icmp
 - os_security_group_rule:
     cloud: "{{ cloud_name }}"
-    security_group: "{{ securitygroup_name }}"
+    security_group: icmp
     protocol: icmp
     remote_ip_prefix: 0.0.0.0/0
-  tags:
-    - tested
+
+- os_security_group:
+    cloud: "{{ cloud_name }}"
+    name: https
+    state: present
+- os_security_group_rule:
+    cloud: "{{ cloud_name }}"
+    security_group: https
+    protocol: tcp
+    port_range_min: 443
+    port_range_max: 443
+    remote_ip_prefix: 0.0.0.0/0
+
+- os_security_group:
+    cloud: "{{ cloud_name }}"
+    name: postgres
+    state: present
+- os_security_group_rule:
+    cloud: "{{ cloud_name }}"
+    security_group: postgres
+    protocol: tcp
+    port_range_min: 5432
+    port_range_max: 5432
+    remote_ip_prefix: 0.0.0.0/0
+
+- os_security_group:
+    cloud: "{{ cloud_name }}"
+    name: tomcat-web
+    state: present
+- os_security_group_rule:
+    cloud: "{{ cloud_name }}"
+    security_group: tomcat-web
+    protocol: tcp
+    port_range_min: 8080
+    port_range_max: 8080
+    remote_ip_prefix: 0.0.0.0/0
