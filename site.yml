@@ -6,17 +6,16 @@
     deployment: dev
   roles:
     - osp-flavor
-    - osp-securitygroup
-    - osp-keypair
     - osp-network
   tasks:
-    #    - name: install frontend
     - include_vars: "{{ item }}"
       with_items:
         - "host_vars/frontend1.yml"
         - "group_vars/frontends.yml"
-    - include_role: 
+    - include_role:
         name: osp-securitygroup
+    - include_role:
+        name: osp-keypair
     - include_role:
         name: osp-instance
 
@@ -27,6 +26,8 @@
     - include_role:
         name: osp-securitygroup
     - include_role:
+        name: osp-keypair
+    - include_role:
         name: osp-instance
 
     - include_vars: "{{ item }}"
@@ -35,6 +36,8 @@
         - "group_vars/apps.yml"
     - include_role:
         name: osp-securitygroup
+    - include_role:
+        name: osp-keypair
     - include_role:
         name: osp-instance
 
@@ -45,15 +48,6 @@
     - include_role:
         name: osp-securitygroup
     - include_role:
+        name: osp-keypair
+    - include_role:
         name: osp-instance
-        #    - name: install app1
-        #      include_role: name=osp-securitygroup # vars_from=app1.yml
-        #      include_role: name=osp-instance #vars_from=app1.yml
-        #    - name: install app2
-        #      include_role: name=osp-securitygroup #vars_from=app2.yml
-        #      include_role: name=osp-instance #vars_from=app2.yml
-        #    - name: install appdb
-        #      include_role: name=osp-securitygroup #vars_from=appdb.yml
-        #      include_role: name=osp-instance #vars_from=appdb.yml
-        #    - name: gather facts
-        #      include_role: name=osp-facts
