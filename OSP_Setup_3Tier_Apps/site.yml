@@ -2,9 +2,9 @@
 - name: setup 3tiers app
   gather_facts: false
   hosts: jumpbox
-  #  vars:
-  #    cloud_name: ospcloud
-  #    deployment: dev
+  vars:
+    cloud_name: ospcloud
+    deployment: dev
   roles:
     - name: osp-facts
 
