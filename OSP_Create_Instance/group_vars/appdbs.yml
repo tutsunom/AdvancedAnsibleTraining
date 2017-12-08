@@ -1,4 +1,4 @@
-securitygroup_name: appdbs
+securitygroup_name: ssh,postgres
 key_name: ansible_ssh
 int_net_name: int_network
 int_subnet_name: internal_subnet
