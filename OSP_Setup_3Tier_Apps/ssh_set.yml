@@ -1,0 +1,9 @@
+- hosts: localhost
+  become: yes
+  tasks:
+  - name: Add ssh_args in ansible.cfg to point to the user's SSH config
+    lineinfile:
+      path: /etc/ansible/ansible.cfg
+      insertafter: '^#ssh_args '
+      line: 'ssh_args = -F ./ssh.cfg -o ControlMaster=auto -o ControlPersist=5m -o LogLevel=QUIET'
+
