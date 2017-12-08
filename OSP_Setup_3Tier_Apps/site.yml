@@ -25,7 +25,7 @@
     - name: tomcat-setup
 
 - name: setup appdb
-  gather_facts: false
+  gather_facts: true
   hosts: appdbs
   become: yes
   roles:
