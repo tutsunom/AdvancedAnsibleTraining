@@ -1,4 +1,0 @@
-- os_nova_flavor:
-    cloud: "{{ cloud_name }}"
-    name: "{{ flavor_name }}"
-    state: absent 

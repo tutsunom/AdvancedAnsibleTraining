@@ -1,3 +1,0 @@
-server_name: app1
-server_group: apps
-securitygroup_name: apps_secgrp
