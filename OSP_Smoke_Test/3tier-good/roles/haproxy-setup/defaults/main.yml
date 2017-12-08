@@ -1,0 +1,5 @@
+---
+# defaults file for roles/haproxy-setup
+haproxy_module_name: haproxy
+haproxy_service_name: haproxy
+haproxy_config_path: /etc/haproxy/haproxy.cfg

@@ -1,0 +1,22 @@
+---
+- name: Fact
+  gather_facts: false
+  hosts: jumpbox
+  vars:
+    cloud_name: ospcloud
+    deployment: dev
+  roles:
+    - name: osp-facts
+
+- name: Smoke
+  gather_facts: false
+  hosts: frontends
+  tasks:
+    - uri:
+        uri: http://{{ item }}/index.html
+      register: result
+      until: result.status == 200
+      retries: 5
+      delay: 10
+      with_items:
+        - "{{ play_hosts }}"

@@ -1,0 +1,7 @@
+---
+  - name: setup tomcat
+    hosts: apps
+    become: yes
+    gather_facts: false
+    roles:
+      - apps

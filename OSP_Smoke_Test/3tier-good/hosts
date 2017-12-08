@@ -1,0 +1,16 @@
+[all:vars]
+GUID=b0b5
+timeout=60
+ansible_become=yes
+ansible_ssh_user=ec2-user
+
+[frontends]
+frontend1.b0b5.internal
+
+[apps]
+app1.b0b5.internal
+app2.b0b5.internal
+
+[appdbs]
+appdb1.b0b5.internal
+
