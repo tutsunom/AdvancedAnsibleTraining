@@ -4,11 +4,11 @@
   vars:
     cloud_name: ospcloud
     deployment: dev
-    #  roles:
-    #    - osp-flavor
-    #    - osp-securitygroup
-    #    - osp-keypair
-    #    - osp-network
+  roles:
+    - osp-flavor
+    - osp-securitygroup
+    - osp-keypair
+    - osp-network
   tasks:
     #    - name: install frontend
     - include_vars: "{{ item }}"
